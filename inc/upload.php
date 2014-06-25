@@ -190,7 +190,7 @@ if(!$_POST['media_ids_checked']){
 					$data = curl_exec($ch);
 					curl_close($ch);
 					$move = file_put_contents("../media/cms_thumbs/youtube_" . $file_info['source'] . ".jpg", $data);
-					$move = file_put_contents("../../" . $settings['cms']['media_path'] . "youtube_" . $video_id . ".jpg", $data);
+					$move = file_put_contents("../" . $settings['cms']['media_path'] . "youtube_" . $video_id . ".jpg", $data);
 					
 					if ($content !== false) {
 						$file_info['title'] = get_string_between($content,"<title type='text'>","</title>");
@@ -262,7 +262,7 @@ if(!$_POST['media_ids_checked']){
 						$data = curl_exec($ch);
 						curl_close($ch);
 						$move = file_put_contents("../media/cms_thumbs/vimeo_" . $video_id . ".jpg", $data);	
-						$move = file_put_contents("../../" . $settings['cms']['media_path'] . "vimeo_" . $video_id . ".jpg", $data);	
+						$move = file_put_contents("../" . $settings['cms']['media_path'] . "vimeo_" . $video_id . ".jpg", $data);	
 					} else {
 						// Unable to get Vimeo details
 						$file_info['title'] = "Unable to Retrieve Vimeo Title";
@@ -313,7 +313,7 @@ if(!$_POST['media_ids_checked']){
 						
 						// Loop until an available filename is found
 						$file_counter = 1; 
-						while(file_exists( "../../" . $settings['cms']['media_path'] . $file_info['file_name'] . "." . $file_info['extension'] )){
+						while(file_exists( "../" . $settings['cms']['media_path'] . $file_info['file_name'] . "." . $file_info['extension'] )){
 							$file_info['file_name'] = $safe_title . '-' . $file_counter++;
 						}
 						
@@ -327,7 +327,7 @@ if(!$_POST['media_ids_checked']){
 					// Create Path
 					
 					$file_info['source'] = $file_info['file_name'] . "." . $file_info['extension'];
-					$file_info['path'] = "../../" . $settings['cms']['media_path'] . $file_info['file_name'] . "." . $file_info['extension'];
+					$file_info['path'] = "../" . $settings['cms']['media_path'] . $file_info['file_name'] . "." . $file_info['extension'];
 					
 					//////////////////////////////////////////////////////////////////////////////
 					// Move file (Back up two dirs since we're in the inc folder)
@@ -392,8 +392,8 @@ if(!$_POST['media_ids_checked']){
 					//////////////////////////////////////////////////////////////////////////////
 					// Check upload directory exists
 					
-					if(!file_exists("../../" . $settings['cms']['media_path'])){
-						$error_each[] = "Upload directory doesn't exist - ../../" . $settings['cms']['media_path'];
+					if(!file_exists("../" . $settings['cms']['media_path'])){
+						$error_each[] = "Upload directory doesn't exist - ../" . $settings['cms']['media_path'];
 					}
 					
 					
